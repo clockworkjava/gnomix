@@ -7,7 +7,11 @@ import java.util.Scanner;
 
 public class TextMainView {
 
-    private BookService bookService = new BookService();
+    private BookService bookService;
+
+    public TextMainView(BookService bs) {
+        this.bookService = bs;
+    }
 
     public void init() throws IOException {
         System.out.println("GNOMIX - System do zarządzania zbiorami bibliotecznymi");

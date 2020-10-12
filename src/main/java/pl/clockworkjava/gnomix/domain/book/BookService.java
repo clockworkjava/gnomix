@@ -5,7 +5,11 @@ import java.io.IOException;
 
 public class BookService {
 
-    private BookRepository repository = new BookRepository();
+    private BookRepository repository;
+
+    public BookService(BookRepository br) {
+        this.repository = br;
+    }
 
     public Book createNewBook(String title) {
         return this.repository.createNewBook(title);
