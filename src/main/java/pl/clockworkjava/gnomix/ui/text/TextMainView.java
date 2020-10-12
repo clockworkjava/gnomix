@@ -2,15 +2,16 @@ package pl.clockworkjava.gnomix.ui.text;
 
 import pl.clockworkjava.gnomix.domain.book.BookService;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class TextMainView {
 
     private BookService bookService = new BookService();
 
-    public void init() {
+    public void init() throws IOException {
         System.out.println("GNOMIX - System do zarządzania zbiorami bibliotecznymi");
-
+        this.bookService.readAll();
         System.out.println("Wybierz operację:");
         Scanner scanner = new Scanner(System.in);
         int option = -1;
@@ -22,6 +23,8 @@ public class TextMainView {
             if( option == 1) {
                 this.handleCreateNewBook(scanner);
             } else if (option == 0) {
+                System.out.println("Zapisuję dane");
+                this.bookService.saveAll();
                 System.out.println("Kończe działanie programu. Do zobaczenia.");
             }
         }
